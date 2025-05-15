@@ -64,7 +64,7 @@
         }
       }
     },
-    "/api/signup": {
+    "/signup": {
       "post": {
         "description": "",
         "parameters": [
@@ -108,6 +108,46 @@
           }
         }
       }
+    },
+    "/addnewbatch": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Batchid": {
+                  "example": "any"
+                },
+                "Batchname": {
+                  "example": "any"
+                },
+                "subject": {
+                  "example": "any"
+                },
+                "trainer": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
-  }
+  },
+  "basepath": "/api"
 }

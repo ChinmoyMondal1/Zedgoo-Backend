@@ -3,11 +3,13 @@ const jwt = require('jsonwebtoken')
 require('dotenv').config();
 const logincontrol = async(req,res)=>{
     const {email,pass} = req.body;
-    console.log(req.body);
+    // console.log(req.body);
     
     
-    if ( !email || !pass) {
-        return res.status(400).json({ success: false, message: "All fields must be filled" });
+    if ( !email || !pass || pass.trim() === "") {
+        console.log("All fields required");
+        
+        return res.status(400).json({ success: false, message: "All fields must be filled" });    //just for validation (Can be done in FE)
     }
 
     try {
@@ -18,8 +20,9 @@ const logincontrol = async(req,res)=>{
         if (login.success) {
             const user = login.user;
             const token = jwt.sign(
-                {
-                    email: user.email
+                {   
+                    email: user.email,
+                    orgID : user.orgID
                 },
                 process.env.Secret_token,
                 { expiresIn:process.env.expiresIn},

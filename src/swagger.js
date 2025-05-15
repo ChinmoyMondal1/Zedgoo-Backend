@@ -7,8 +7,9 @@ const doc = {
     },
      host:'localhost:4000',
      schemes:['http'],
+     basepath:'/api'
 };
 
 const outputfile = './swagger-output.json';
-const routes = ['./routes/loginroute.js','./routes/Signuproute.js'];
+const routes = ['./routes/loginroute.js','./routes/Signuproute.js','./routes/Batchroutes.js'];
 swaggerAutogen(outputfile,routes,doc);

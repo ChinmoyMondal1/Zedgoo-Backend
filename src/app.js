@@ -3,7 +3,8 @@ const bodyparser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
 const Loginroutes = require('./routes/loginroute.js');
-const Signuproutes = require('./routes/Signuproute.js')
+const Signuproutes = require('./routes/Signuproute.js');
+const newBatchroutes = require('./routes/Batchroutes.js')
 const authenticate = require('./auth_Middleware/jwtverify.js')
 const swaggerUi = require('swagger-ui-express');
 const swaggerdocument = require('./swagger-output.json');
@@ -22,6 +23,8 @@ app.get('/api/dashboard', authenticate, (req, res) => { // This is where the aut
     });
 });
 app.use('/api',Signuproutes);
+
+app.use('/api',newBatchroutes);
 
 app.use('/api-docs',swaggerUi.serve, swaggerUi.setup(swaggerdocument));
 

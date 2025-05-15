@@ -9,7 +9,7 @@ const SignupOp = async(fullname,password,phonenumber,emailaddress,OrgID)=>{
         
         const existing_email = await pool.request()
         .input('email',sql.VarChar(100),emailaddress)
-        . query(`select Count(*) as count from Users where Email =@email`);
+        . query(`select Count(*) as count from Users where Email = @email`);
         
         const count = parseInt(existing_email.recordset[0].count, 10);
         
